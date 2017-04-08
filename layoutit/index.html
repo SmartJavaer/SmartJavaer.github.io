@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>命令模式</title>
+</head>
+<body>
+<button id='execute'>点击我执行命令</button>
+<button id='undo'>点击我执行命令</button>
+<script>
+    //命令模式的意图 是把请求封装为对象，从而分离请求的发起者和请求的接受者之间的耦合关系
+    // 发起者(请求(接受者))   这样传递的
+    //接收者
+    var Tv={
+        open:function(){
+            console.log('打开电视');
+        },
+        close:function(){
+            console.log('关闭电视');
+        }
+    };
+    //请求
+    //可以这样
+    var OpenTvCommand=function(receiver){
+        this.receiver=receiver;
+    }
+    OpenTvCommand.prototype.execute=function(){
+        this.receiver.open();
+    }
+    OpenTvCommand.prototype.undo=function(){
+        this.receiver.close();
+    }
+    //也可以这样
+    var OpenTvCommand1=function(receiver) {
+        var execute=function(){   //receiver就是闭包
+            receiver.open();
+        };
+        var undo=function(){
+            receiver.close();
+        };
+        return {
+            execute:execute,
+            undo:undo
+        }
+    }
+    //发起者
+    var setCommand=function(command){
+        document.getElementById('execute').onclick=function(){
+            command.execute();
+        }
+        document.getElementById('undo').onclick=function(){
+            command.undo();
+        }
+    }
+    setCommand(OpenTvCommand1(Tv));
+    //和策略模式很相同，都被封装起来了。
+    //撤销和重做
+    //宏命令
+</script>
+</body>
+</html>
