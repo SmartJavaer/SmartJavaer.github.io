@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新标签页</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link href="css/main.css" rel="stylesheet">
+    <style id="newTab_themeData"></style>
+    <style id="newTab_themeData2"></style>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/in.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/data.js"></script>
+    <base target="_blank">
+</head>
+<body oncontextmenu="return false">
+<script>
+    if (!store.get('local_resouceVersion')) {
+        store.remove('newTabHtml_resouce');
+        store.set('local_resouceVersion', QYNewTabVersion_resouce);
+    } else {
+        if (store.get('local_resouceVersion') != QYNewTabVersion_resouce) {
+            store.set('local_resouceVersion', QYNewTabVersion_resouce);
+            store.remove('newTabHtml_resouce');
+        }
+    }
+    if (store.get('newTabHtml_resouce')) {
+        var local_html = store.get('newTabHtml_resouce');
+        $('body').attr('class', 'Main_' + local_html.body_class).html('<div id="mainBg"><img src="' + (QYNewTabConfig.cloud_bz ? QYNewTabConfig.cloud_backgroundImg : QYNewTabConfig.backgroundImg) + '"></div><div id="main_bodyCon">' + (local_html.body_html ? local_html.body_html : defHtml_resouce.body_html) + '</div>');
+    } else {
+        $('body').html('<div id="mainBg"><img src="' + (QYNewTabConfig.cloud_bz ? QYNewTabConfig.cloud_backgroundImg : QYNewTabConfig.backgroundImg) + '"></div><div id="main_bodyCon">' + defHtml_resouce.body_html + '</div>');
+        ;
+    }
+</script>
+</body>
+</html>

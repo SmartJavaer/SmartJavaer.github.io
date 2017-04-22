@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新标签页-隐身模式</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link href="css/invisible.css" rel="stylesheet">
+    <base target="_blank">
+</head>
+<body>
+<div id="manWrap">
+    <div id="js_searchBox" class="searchBox">
+        <!--隐身模式标题-->
+        <div class="Invisible">
+            <h1 class="welcome">欢迎使用隐身模式</h1>
+            <p class="v_tip">上网、搜索、看片不留历史记录，绝对隐私</p>
+            <p class="v_tip">适用于查看敏感、隐私网页，以及临时用别人电脑等</p>
+        </div>
+        <!--搜索-->
+        <div class="search_wrap">
+            <!--搜索tab-->
+            <div class="search_tabs" id="serTabs">
+                <a href="javascript:;" id="serType_html" data-type="html">网页</a>
+                <a href="javascript:;" id="serType_video" data-type="video">视频</a>
+                <a href="javascript:;" id="serType_shop" data-type="shop">购物</a>
+                <a href="javascript:;" id="serType_image" data-type="image">图片</a>
+                <a href="javascript:;" id="serType_com" data-type="com">社区</a>
+                <a href="javascript:;" id="serType_map" data-type="map">地图</a>
+            </div>
+            <!--搜索栏-->
+            <div class="search clearfix">
+                <input type="hidden" id="serHd" value="0" />
+                <input type="text" name="wd" id="gNewSearch" class="hd_in" placeholder="你想看的这里都有" autocomplete="off" />
+                <input type="button" class="hd_serbtn" value="" onclick="subSerFrm()">
+                <div class="sgIco"><span class="qyIco"></span></div>
+                <ul id="serDownList" class="serDownList">
+                    <li class="sg" data-src="sougou" data="sgIco">搜狗<i></i></li>
+                    <li class="bd" data-src="baidu" data="bdIco">百度</li>
+                    <li class="qy" data-src="qy" data="qyIco">千影</li>
+                </ul>
+                <div class="serChangeBarCon">
+                    <div class="hots">
+                        <ul id="js_rollTxt"></ul>
+                    </div>
+                    <div class="ref">
+                        <a id="js_serChange" href="javascript:;">换一换</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/invisible.js"></script>
+</body>
+</html>
